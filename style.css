@@ -1,0 +1,34 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif; /* the font family is set to 'Poppins', which is a specific typeface or font. If the browser does not have 'Poppins' installed on the user's system, it will use a fallback font specified by the "sans-serif" keyword. The "sans-serif" keyword is a generic font family that refers to any font without serifs (the small decorative lines at the end of strokes in letters), which includes popular fonts such as Arial, Helvetica, and Verdana. */
+  box-sizing: border-box; /*By default, when we specify the width or height of an HTML element using CSS, the browser calculates those values based on the content width and height plus any padding and border that is added to the element. This can sometimes lead to unexpected layout issues, especially when dealing with responsive design. The "box-sizing" property allows us to change this default behavior. When "box-sizing" is set to "border-box", the width and height values specified for an element include the content, padding, and border, all within the specified dimensions. This ensures that the total size of the box remains constant, regardless of how much padding or border is added. */
+}
+body{
+  background: #080808;
+  color: #fff;
+}
+#header{
+  width: 100%;
+  height: 100vh; /* topin: should be deleted, because otherwise the background image goes into the left side */
+  background-image: url(images/background_image.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.logo{
+  width: 20%;
+
+}
+
+.container{
+  padding: 10px 10%;
+}
+
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
