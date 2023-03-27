@@ -7,7 +7,7 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- "viewport" meta tag is telling the browser that the width of the viewport should be equal to the width of the device, and the initial zoom scale should be set to 1.0. This means that the web page will be scaled to fit the screen size of the device and the content will be rendered at the appropriate size and scale. -->
     <title>Tobias Pingel Web Development</title>
     <link rel="stylesheet" href="style.css"> <!-- The "rel" attribute specifies the relationship between the HTML document and the external resource being linked, in this case, a stylesheet. -->
-
+    <script src="https://kit.fontawesome.com/5c4eea8356.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div id="header">
@@ -24,9 +24,98 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
         </nav>
         <div class="header-text">
           <p>Frontend Web Developer</p>
-          <h1>Hi, I 'm Tobias Pingel from Poland / Germany.</h1>
+          <h1>Hi, I 'm <span>Tobias</span> Pingel.</h1>
         </div>
       </div>
     </div>
+  <!-----------------about section---------------->
+    <div id="about">
+      <div class="container">
+        <div class="row">
+          <div class="about-col-1">
+            <img src="images/avatar.png" />
+          </div>
+          <div class="about-col-2">
+            <h1 class="sub-title">About Me</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sit quas laborum molestias, totam incidunt nisi labore ducimus a hic, quis, iure ex accusantium sapiente? Sit perspiciatis quod eligendi cum?</p>
+            <div class="tab-titles">
+              <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+              <p class="tab-links" onclick="opentab('experience')">Experience</p>
+              <p class="tab-links" onclick="opentab('education')">Education</p>
+            </div>
+            <div class="tab-contents active-tab" id="skills">
+              <ul>
+                <li><span>Frontend Web Development</span><br>Web App Development with focus on Frontend.</li>
+                <li><span>Frontend Web Development</span><br>Web App Development with focus on Frontend.</li>
+                <li><span>Frontend Web Development</span><br>Web App Development with focus on Frontend.</li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="experience">
+              <ul>
+                <li><span>2023 - present</span><br>Web App Development with focus on Frontend.</li>
+                <li><span>2018 - present</span><br>Software Engineer Renewable Power Systems.</li>
+                <li><span>2015 - 2018</span><br>Engineer Research and Development Renewable Power Systems.</li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="education">
+              <ul>
+                <li><span>2013 - 2015</span><br>Master of Science, Electrical Engineering and Information Technology.</li>
+                <li><span>2009 - 2013</span><br>Bachelor of Science, Renewable Energy and Electric Energy Systems.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- --------------Services---------------- -->
+    <div id="services">
+      <div class="container">
+        <h1 class="sub-title">MyServices</h1>
+        <div class="services-list">
+          <div>
+            <i class="fa-solid fa-code"></i>
+            <h2>Frontend Web Development</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur asperiores laboriosam temporibus accusamus eligendi? Reiciendis earum animi perferendis, itaque aut sed est? Architecto impedit minima iusto sed id voluptatum molestiae!</p>
+            <a href="#">learn more</a>
+          </div>
+          <div>
+            <i class="fa-solid fa-bars-progress"></i>
+            <h2>coming soon ...</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur asperiores laboriosam temporibus accusamus eligendi? Reiciendis earum animi perferendis, itaque aut sed est? Architecto impedit minima iusto sed id voluptatum molestiae!</p>
+            <a href="#">learn more</a>
+          </div>
+          <div>
+            <i class="fa-solid fa-bars-progress"></i>
+            <h2>coming soon ...</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur asperiores laboriosam temporibus accusamus eligendi? Reiciendis earum animi perferendis, itaque aut sed est? Architecto impedit minima iusto sed id voluptatum molestiae!</p>
+            <a href="#">learn more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- --------------javascript ------------ -->
+    <script>
+      var tablinks = document.getElementsByClassName("tab-links");
+      var tabcontents = document.getElementsByClassName("tab-contents");
+      function opentab(tabname)
+      {
+        // remove the active-link and active-content class from the active tab
+        for(tablink of tablinks)
+        {
+          tablink.classList.remove("active-link"); 
+        }
+        for(tabcontent of tabcontents)
+        {
+          tabcontent.classList.remove("active-tab"); 
+        }
+        // event is an object that represents the event that triggered the function (onClick)
+        // currentTarget is a property of the event object that refers to the element that the event listener is attached to. (one of the tab-links)
+        // classList is a property that returns the class name(s) of an element as a DOMTokenList object.
+          // The add() method of the classList property adds a class to the list of classes of an element.
+        event.currentTarget.classList.add("active-link"); 
+        document.getElementById(tabname).classList.add("active-tab");
+      }
+    </script>
   </body>
 </html>

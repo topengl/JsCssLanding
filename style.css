@@ -10,55 +10,154 @@ body{
 }
 #header{
   width: 100%;
-  height: 100vh; /* topin: should be deleted, because otherwise the background image goes into the left side */
+  height: 700px;
+  max-height: 50vh; /* topin: should be deleted, because otherwise the background image goes into the left side */
   background-image: url(images/background_image.png);
   background-size: cover;
   background-position: center;
 }
 
-.container{
-  padding: 10px 10%;
-}
+  .container{
+    padding: 10px 10%;
+  }
 
-nav{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+    nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
 
+    }
+      .logo{
+        width: 140px;
+      }
+      nav ul li{
+        display: inline-block; /* horizontal alignment */
+        margin: 10px 20px;
+      }
+        nav ul li a{
+          color: #fff;
+          text-decoration: none;
+          font-size: 18px;
+          position: relative; /* relative for the underline */
+        }
+        nav ul li a::after{
+          content: '';
+          width: 0;
+          height: 3px;
+          background: #ff004f;
+          position: absolute; /* absolute to the a tag */
+          left: 0;
+          bottom: -6px;
+          transition: 0.5s;
+        }
+        nav ul li a:hover::after{
+          width: 100%;
+        }
+    .header-text{
+      margin-top: 20px;
+      font-size: 30px;
+      max-width: 50vw;
+    }
+      .header-text h1{
+        font-size: 60px;
+        margin-top: 20px;
+      }
+      .header-text h1 span{
+        color: #ff004f;
+      }
+
+/******************* about section ****************/
+#about{
+  padding: 30px 0;
 }
-.logo{
-  width: 140px;
+  .row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+    .about-col-1{
+      flex-basis: 35%; /* The width of the column will be 35%. When flex-basis is set to 50%, it means that the initial main size of the flex item will be 50% of the width or height of its containing block’s content area. https://youtu.be/jx4FtPlDXJg */
+    }
+      .about-col-1 img{
+        border-radius: 15px;
+        width: 100%;
+      }
+    .about-col-2{
+      flex-basis: 60%;
+    }
+      .sub-title{
+        font-size: 60px;
+        font-weight: 600;
+      }
+      .tab-titles{
+        display: flex;
+        margin: 20px 0 40px 0;
+      }
+        .tab-links{
+          margin: 0 50px 0 0;
+          font-size: 18px;
+          font-weight: 600;
+          cursor: pointer;
+          position: relative;
+        }
+        .tab-links::after{
+          content: '';
+          width:0;
+          height: 3px;
+          background: #ff004f;
+          position: absolute;
+          left: 0;
+          bottom: -8px;
+          transition: 0.5s;
+        }
+        .tab-links.active-link::after{
+          width: 50%;
+        }
+      .tab-contents{
+        display: none;
+      }
+      .tab-contents.active-tab{
+        display: block;
+      }
+        .tab-contents ul li{
+          list-style: none;
+          margin: 15px 0 0 0;
+        }
+          .tab-contents ul li span{
+            color: #81062d;
+            font-size: 14px;
+            font-weight: 600;
+          }
+/* ****************services *************/
+#services{
+  padding: 30px 0;
 }
-nav ul li{
-  display: inline-block; /* horizontal alignment */
-  margin: 10px 20px;
+.services-list{
+  display: grid;
+  /*
+  The grid-template-columns property specifies the size and number of columns in a grid layout. 
+  The value repeat(auto-fit, minmax(250px, 1fr)) 
+    The repeat function takes two arguments: the first argument specifies the number of times to repeat the pattern, and the second argument specifies the pattern to repeat.
+  That means that the grid will create as many columns as can fit in the container, 
+  with a minimum size of 250px and a maximum size of 1fr. 
+    The auto-fit keyword tells the grid to automatically fit the columns into the available space. 
+    The minmax() function sets the minimum and maximum size of the columns. 
+    
+    In this case, the minimum size is 250px and the maximum size is 1fr, which means that the column will take up one fraction of the available space.
+  fr is a unit of measurement in CSS that represents a fraction of the available space in a grid container. 
+    For example, if you have a grid container with three columns and you set grid-template-columns: 1fr 2fr 1fr, the middle column will take up twice as much space as the other two columns.
+  */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* grid-gap is a shorthand property in CSS that specifies the size of the gap between rows and columns in a grid layout. It can take one or two values: if you provide one value, it will set the size of the gap between both rows and columns; if you provide two values, the first value will set the size of the row gap and the second value will set the size of the column gap.
+  For example, if you have a grid container and you set grid-gap: 10px 20px, it means that there will be a 10px gap between rows and a 20px gap between columns.
+  Note that grid-gap is a shorthand property for grid-row-gap and grid-column-gap, which can be used to set the size of the row and column gaps separately. */
+  grid-gap: 40px;
+  margin: 20px 0;
 }
-nav ul li a{
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-  position: relative; /* relative for the underline */
-}
-nav ul li a::after{
-  content: '';
-  width: 0;
-  height: 3px;
-  background: #ff004f;
-  position: absolute; /* absolute to the a tag */
-  left: 0;
-  bottom: -6px;
-  transition: 0.5s;
-}
-nav ul li a:hover::after{
-  width: 100%;
-}
-.header-text{
-  margin-top: 20px;
+.services-list div i{
   font-size: 30px;
 }
-
-.header-text h1{
-  font-size: 60px;
-  margin-top: 20px;
+.services-list h2{
+  margin: 10px 0;
 }
