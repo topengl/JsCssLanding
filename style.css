@@ -10,14 +10,14 @@ body{
 }
 #header{
   width: 100%;
-  height: 700px;
-  max-height: 50vh; /* topin: should be deleted, because otherwise the background image goes into the left side */
+  height: 1000px;
+  max-height: 100vh; /* topin: should be deleted, because otherwise the background image goes into the left side */
   background-image: url(images/background_image.png);
   background-size: cover;
   background-position: center;
 }
 
-  .container{
+.container{
     padding: 10px 10%;
   }
 
@@ -155,9 +155,128 @@ body{
   grid-gap: 40px;
   margin: 20px 0;
 }
-.services-list div i{
-  font-size: 30px;
+.services-list div{
+  background: #262626;
+  padding: 40px;
+  font-size: 14px;
+  font-weight: 300;
+  border-radius: 10px;
+  transition: 0.5s;
 }
-.services-list h2{
-  margin: 10px 0;
+.services-list div:hover{
+  background: #310010;
+  transform: translateY(-10px);
+}
+.services-list div i{
+  font-size: 40px;
+}
+.services-list div h2{
+  font-size: 30px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+/* not make only the link but the whole grid element click able (href)*/
+.services-list div a{
+  text-decoration: none;
+  color: #fff;  
+  font-size: 12px;
+  margin-top: 20px;
+  display: block; /* a tag is an inline element, so we have to change its display property to block/inline-block. The difference between block and inline-block is, that inline-block does not add a line-break after the element */
+  transition: 0.5s;
+}
+.services-list div a:hover{
+  text-decoration: underline;
+}
+/* *******************portfolio **************** */
+#portfolio{
+  padding: 50px 0;
+}
+.work-list{
+  display: grid;
+  /*
+  The grid-template-columns property specifies the size and number of columns in a grid layout. 
+  The value repeat(auto-fit, minmax(250px, 1fr)) 
+    The repeat function takes two arguments: the first argument specifies the number of times to repeat the pattern, and the second argument specifies the pattern to repeat.
+  That means that the grid will create as many columns as can fit in the container, 
+  with a minimum size of 250px and a maximum size of 1fr. 
+    The auto-fit keyword tells the grid to automatically fit the columns into the available space. 
+    The minmax() function sets the minimum and maximum size of the columns. 
+    
+    In this case, the minimum size is 250px and the maximum size is 1fr, which means that the column will take up one fraction of the available space.
+  fr is a unit of measurement in CSS that represents a fraction of the available space in a grid container. 
+    For example, if you have a grid container with three columns and you set grid-template-columns: 1fr 2fr 1fr, the middle column will take up twice as much space as the other two columns.
+  */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* grid-gap is a shorthand property in CSS that specifies the size of the gap between rows and columns in a grid layout. It can take one or two values: if you provide one value, it will set the size of the gap between both rows and columns; if you provide two values, the first value will set the size of the row gap and the second value will set the size of the column gap.
+  For example, if you have a grid container and you set grid-gap: 10px 20px, it means that there will be a 10px gap between rows and a 20px gap between columns.
+  Note that grid-gap is a shorthand property for grid-row-gap and grid-column-gap, which can be used to set the size of the row and column gaps separately. */
+  grid-gap: 40px;
+  margin: 20px 0;
+}
+.work{
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+.work img{
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.5s;
+}
+.work:hover img{
+  transform: scale(1.1);
+}
+.work .layer{
+  width: 100%;
+  height: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.496), #81062d);
+  position: absolute;
+    left: 0;
+    bottom: 0;
+  overflow: hidden;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  transition: height 0.5s;
+}
+.work:hover .layer{
+  height: 100%;
+}
+.layer h3{
+  font-weight: 600;
+  font-size: 20px;
+}
+.layer p{
+  font-weight: 600;
+  font-size: 14px;
+}
+.layer a{
+  margin-top: 20px;
+  color: #81062d;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 60px;
+  background: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.btn{
+  display: block;
+  margin: 50px auto;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid #81062d;
+  padding: 14px 50px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.3s;
+}
+.btn:hover{
+  background: #81062d;
 }
