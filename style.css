@@ -1,7 +1,9 @@
 /*
     ToDos:
     - layer und My Work react on hover, how to do it on touchscreen? maybe something like: "click to see more"
-*/
+    - how to test locally on mobile device
+    - page width is too big for mobile: scroll bar shows up
+    */
 
 *{
   margin: 0;
@@ -12,6 +14,7 @@
 body{
   background: #080808;
   color: #fff;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 #header{
   width: 100%;
