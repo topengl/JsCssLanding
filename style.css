@@ -16,7 +16,7 @@ body{
 #header{
   width: 100%;
   height: 1000px;
-  min-height: -webkit-fill-available;
+  max-height: -webkit-fill-available;
   max-height: 100vh; /* topin: should be deleted, because otherwise the background image goes into the left side */
   background-image: url(images/background_image.png);
   background-size: cover;
