@@ -5,7 +5,7 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
     <meta charset="UTF-8"> <!-- Metadata is data about data and describes various aspects of the document, such as the author, keywords, description, character set, and other information that is not visible on the page but is useful for search engines, social media platforms, and other applications. -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- The "X-UA-Compatible" value is a non-standard attribute that was introduced by Microsoft to provide compatibility with older versions of Internet Explorer. content="IE=edge" would tell Internet Explorer to render the document in the latest version of the browser's engine, regardless of the version specified in the browser's settings. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- "viewport" meta tag is telling the browser that the width of the viewport should be equal to the width of the device, and the initial zoom scale should be set to 1.0. This means that the web page will be scaled to fit the screen size of the device and the content will be rendered at the appropriate size and scale. -->
-    <title>Tobias Pingel Web Development</title>
+    <title>Tobias Webdev</title>
     <link rel="stylesheet" href="style.css"> <!-- The "rel" attribute specifies the relationship between the HTML document and the external resource being linked, in this case, a stylesheet. -->
     <script src="https://kit.fontawesome.com/5c4eea8356.js" crossorigin="anonymous"></script>
   </head>
@@ -24,7 +24,7 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
         </nav>
         <div class="header-text">
           <p>Frontend Web Developer</p>
-          <h1>Hi, I 'm <span>Tobias</span> Pingel.</h1>
+          <h1>Hi, <i class="fa-solid fa-hand fa-shake"></i> <br>I 'm <span>Tobias</span> Pingel.</h1>
         </div>
       </div>
     </div>
@@ -118,7 +118,34 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
         <a href="#" class="btn">See more</a>
       </div>
     </div>
+    <!-- --------------contact ------------ -->
+    <div id="contact">
+      <div class="container">
+        <h1 class="sub-title">Contact Me</h1>
+        <div class="row">
+          <div class="contact-left">
+            <p><i class="fa-solid fa-square-envelope"></i> contact@example.com</p>
+            <p><i class="fa-solid fa-square-phone"></i> 0123456789</p>
+            <div class="social-icons">
+              <a href="https://facebook.com/">        <i class="fab fa-facebook"></i></a>
+              <a href="#">                            <i class="fab fa-twitter-square"></i></a>
+              <a href="#">                            <i class="fab fa-instagram"></i></a>
+              <a href="#">                            <i class="fab fa-linkedin"></i></a>
+            </div>
+            <a href="images/cv.pdf" class="btn btn2">Download CV</a>
+          </div>
+          <div class="contact-right">
+            <form>
+              <input type="text" name="Name" placeholder="enter your name" required>
+              <input type="email" name="email" placeholder="enter your email" required>
+              <textarea name="Message" id="" cols="30" rows="10" placeholder="enter Message..."></textarea>
+              <button type="submit" class="btn btn2">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
 
+    </div>
     <!-- --------------javascript ------------ -->
     <script>
       var tablinks = document.getElementsByClassName("tab-links");
