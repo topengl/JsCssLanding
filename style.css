@@ -1,10 +1,18 @@
 /*
     ToDos:
-    - layer und My Work react on hover, how to do it on touchscreen? maybe something like: "click to see more"
-    - add links to social media icons
     - rework cv for download
-    - add "please wait, sending message ..."
+    - german translation
     */
+:root{
+  --dark-white:         #ababab;
+  --white:              #fff;
+  --bright-red:         #ff004f;
+  --dark-red:           #81062d;
+  --black:              #080808;
+  --bright-black:       #262626;
+  --bright-bright-black:#333333;
+  --bright-green:       #61b752;
+}
 
 *{
   margin: 0;
@@ -17,9 +25,9 @@ html{
   scroll-behavior: smooth;
 }
 body{
-  background: #080808;
-  color: #fff;
- overflow-x: hidden; /* Hide horizontal scrollbar added on body and html, to prevent page scrolling left/right */
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden; /* Hide horizontal scrollbar added on body and html, to prevent page scrolling left/right */
 }
 #header{
   width: 100%;
@@ -59,7 +67,7 @@ body{
           content: '';
           width: 0;
           height: 3px;
-          background: #ff004f;
+          background: var(--bright-red);
           position: absolute; /* absolute to the a tag */
           left: 0;
           bottom: -6px;
@@ -78,10 +86,13 @@ body{
         margin-top: 20px;
       }
       .header-text h1 span{
-        color: #ff004f;
+        color: var(--bright-red);
       }
-
-/******************* about section ****************/
+      .header-text h2{
+        font-size: clamp(1rem, 2.5vw + 0.5rem, 1.5rem);
+        margin-top: 20px;
+      }
+/******************* About Me ****************/
 #about{
   padding: 30px 0;
 }
@@ -103,53 +114,77 @@ body{
     .about-col-2{
       flex-basis: 50%;
     }
-      .about-col-2 p{
-        margin: 5px;
-      }
       .sub-title{
         font-size: clamp(1rem, 5vw + 0.5rem, 5rem);
         font-weight: 600;
       }
+      .about-col-2 p{
+        margin: 5px;
+      }
       .tab-titles{
+        margin: 20px 0 0 0;
         display: flex;
-        margin: 20px 0 40px 0;
+          justify-content: space-around;
+          flex-direction: row;
       }
         .tab-links{
-          margin: 0 50px 0 0;
           font-size: 1.1rem;
           font-weight: 600;
           cursor: pointer;
+          
+          text-decoration: underline;
+            text-decoration-color: var(--bright-black);
+            text-decoration-thickness: 3px;
+          transition: text-decoration-color 0.5s;
+          padding: 10px;
+          border: none;
+        }
+        /* The ::after selector inserts something after the content of each selected element(s).*/
+        .tab-links.active-link{
           position: relative;
+          text-decoration-color: var(--dark-red);
         }
         .tab-links::after{
           content: '';
-          width:0;
-          height: 3px;
-          background: #ff004f;
+          width: 100%;
+          height: 130%;
           position: absolute;
           left: 0;
           bottom: -8px;
-          transition: 0.5s;
-        }
-        .tab-links.active-link::after{
-          width: 50%;
+          background: var(--bright-black);
+          z-index: -1;
+          border-radius: 5px;
         }
       .tab-contents{
         display: none;
       }
       .tab-contents.active-tab{
         display: block;
+        background: var(--bright-black);
+        border-radius: 5px;
+        padding: 10px;
+        border: none;
       }
         .tab-contents ul li{
           list-style: none;
           margin: 15px 0 0 0;
         }
           .tab-contents ul li span{
-            color: #81062d;
+            color: var(--dark-red);
             font-size: 0.9rem;
             font-weight: 600;
           }
-/* ****************services *************/
+          .about-col-2 p a, #education a, #experience a{
+            text-decoration: underline;
+              text-decoration-color: var(--bright-bright-black);
+              text-decoration-thickness: 3px;
+            color: var(--white);
+            transition: text-decoration-color 0.5s;
+          }
+          .about-col-2 p a:active, #education a:active, #experience a:active{
+              text-decoration-color: var(--dark-white);
+          }
+/* *************************** services **************************** */
 #services{
   padding: 30px 0;
 }
@@ -165,49 +200,54 @@ body{
     The minmax() function sets the minimum and maximum size of the columns. 
     
     In this case, the minimum size is 250px and the maximum size is 1fr, which means that the column will take up one fraction of the available space.
-  fr is a unit of measurement in CSS that represents a fraction of the available space in a grid container. 
+    fr is a unit of measurement in CSS that represents a fraction of the available space in a grid container. 
     For example, if you have a grid container with three columns and you set grid-template-columns: 1fr 2fr 1fr, the middle column will take up twice as much space as the other two columns.
   */
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: repeat(auto-fit, 1fr);
   /* grid-gap is a shorthand property in CSS that specifies the size of the gap between rows and columns in a grid layout. It can take one or two values: if you provide one value, it will set the size of the gap between both rows and columns; if you provide two values, the first value will set the size of the row gap and the second value will set the size of the column gap.
   For example, if you have a grid container and you set grid-gap: 10px 20px, it means that there will be a 10px gap between rows and a 20px gap between columns.
   Note that grid-gap is a shorthand property for grid-row-gap and grid-column-gap, which can be used to set the size of the row and column gaps separately. */
   grid-gap: 40px;
   margin: 20px 0;
 }
-.services-list div{
-  background: #262626;
-  padding: 40px;
-  font-size: 0.9rem;
-  font-weight: 300;
-  border-radius: 10px;
-  transition: 0.5s;
-}
-.services-list div:hover{
-  background: #310010;
-  transform: translateY(-10px);
-}
-.services-list div i{
-  font-size: 40px;
-}
-.services-list div h2{
-  font-size: 2rem;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
 /* not make only the link but the whole grid element click able (href)*/
-.services-list div a{
+.services-list a{
   text-decoration: none;
-  color: #fff;  
-  font-size: 0.8rem;
-  margin-top: 20px;
+  color: var(--white);  
   display: block; /* a tag is an inline element, so we have to change its display property to block/inline-block. The difference between block and inline-block is, that inline-block does not add a line-break after the element */
-  transition: 0.5s;
 }
-.services-list div a:hover{
-  text-decoration: underline;
-}
-/* *******************portfolio **************** */
+  .services-list div{
+    background: #262626;
+    padding: 1.8rem;
+    font-size: 0.9rem;
+    font-weight: 300;
+    border-radius: 10px;
+    transition: 0.5s;
+    height: 100%;
+    width: 100%;
+    display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+  }
+  .services-list div:active{
+    background: #310010;
+  }
+  .services-list div i{
+    font-size: 40px;
+    margin: 0 0 10px 0;
+  }
+  .services-list div h2{
+    font-size: 2rem;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+  }
+  .services-list div p{
+    margin: 0 0 10px 0;
+  }
+
+/* ********************** portfolio ************************* */
 #portfolio{
   padding: 10px 0;
 }
@@ -238,53 +278,51 @@ body{
   position: relative;
   overflow: hidden;
 }
-.work img{
-  width: 100%;
-  border-radius: 10px;
-  display: block;
-  transition: transform 0.5s;
-}
-.work:hover img{
-  transform: scale(1.1);
-}
-.work .layer{
-  width: 100%;
-  height: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.496), #81062d);
-  position: absolute;
-    left: 0;
-    bottom: 0;
-  overflow: hidden;
-  display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  padding: 0 40px;
-  text-align: center;
-  transition: height 0.5s;
-}
-.work:hover .layer{
-  height: 100%;
-}
-.layer h3{
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-.layer p{
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-.layer a{
-  margin-top: 20px;
-  color: #81062d;
-  text-decoration: none;
-  font-size: 1.1rem;
-  line-height: 60px;
-  background: #fff;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-}
+  .work a{
+    text-decoration: none;
+    color: #fff;
+  }
+    .work img{
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+      transition: transform 0.5s;
+    }
+    .work .layer{
+      width: 100%;
+      height: 40%;
+      background: rgba(0, 0, 0, 0.496);
+      position: absolute;
+        left: 0;
+        bottom: 0;
+      overflow: hidden;
+      display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      padding: 0 40px;
+      text-align: center;
+      transition: height 0.5s;
+    }
+    .layer h3{
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .layer p{
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .layer p i{
+      margin-top: 20px;
+      color: #81062d;
+      text-decoration: none;
+      font-size: 1.1rem;
+      line-height: 60px;
+      background: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
 .btn{
   display: block;
   margin: 50px auto;
@@ -298,10 +336,10 @@ body{
   transition: background 0.3s;
   text-align: center;
 }
-.btn:hover{
+.btn:active{
   background: #81062d;
 }
-/* ********** contact ***********/
+/* ********************* contact me ********************** */
 .contact-left{
   min-width: 210px;
 }
@@ -318,19 +356,17 @@ body{
     }
     .social-icons a{
       text-decoration: none;
-      font-size: 1.5rem;
+      font-size: 3rem;
       margin-right: 15px;
-      color: #ababab;
+      color: var(--dark-white);
       display: inline-block; /* inline: the icons are inline, block: each block can be given a height.*/
-      transition: transform 0.5s;
     }
-    .social-icons a:hover{
-      color: #ff004f;
-      transform: scale(1.5);
+    .social-icons a:active{
+      color: var(--dark-red);
     }
     .btn.btn2{
       display: inline-block;
-      background-color: #81062d;
+      background-color: var(--dark-red);
     }
 .contact-right{
   /* flex-basis: 100%; */
@@ -338,38 +374,45 @@ body{
   width: calc(30vw + 200px);
   max-width: 100%; 
 }
-.contact-right form{
-  width: 100%;
-}
-form input, form textarea{
-  width: 100%;
-  border: 0;
-  outline: none;
-  background: #262626;
-  padding: calc(0.5rem + 1vw);
-  margin: 1rem 0.5rem 1rem 0.5rem;
-  color: #fff;
-  font-size: 1.1rem;
-  border-radius: 6px
-}
-form .btn2{
-  padding: 14PX 60px;
-  font-size: 1.1rem;
-  margin-top: 20px;
-  cursor: pointer;
-}
+  .contact-right form{
+    width: 100%;
+  }
+  form input, form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: var(--bright-black);
+    padding: calc(0.5rem + 1vw);
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    color: #fff;
+    font-size: 1.1rem;
+    border-radius: 6px
+  }
+  form .btn2{
+    padding: 14PX 60px;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  #msg{
+    color: #bright-green;
+    margin-top: -50px;
+    display: block;
+  }
 /***************** footer *************/
 .copyright{
   width: 100%;
   text-align: center;
   padding: 25px 0;
-  background: #262626;
+  background: var(--bright-black);
   font-weight: 300;
   margin-top: 20px;
 }
 .copyright i{
-  color:#ff004f
+  color:var(--bright-red)
 }
+
+
 /****************** css for small screens ***********/
 nav .fas{
   display: none;
@@ -383,7 +426,7 @@ nav .fas{
     font-size: 1.8rem;
   }
   nav ul{
-    background: #81062d;;
+    background: var(--dark-red);
     position: fixed;
     top: 0;
     right: -200px;
@@ -413,8 +456,7 @@ nav .fas{
   .about-col-2{
     font-size: 1.1rem;
   }
-  #msg{
-    color: #61b752;
-    margin-top -50px;
-    display: block;
-  }
+
+}
+
+ 
