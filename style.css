@@ -27,7 +27,8 @@ html{
 body{
   background: var(--black);
   color: var(--white);
-  overflow-x: hidden; /* Hide horizontal scrollbar added on body and html, to prevent page scrolling left/right */
+  /*overflow-x: hidden; /* Hide horizontal scrollbar added on body and html, to prevent page scrolling left/right */
+  /* if any element uses overflow hidden, then navbar can not use sticky: https://www.designcise.com/web/tutorial/how-to-fix-issues-with-css-position-sticky-not-working*/
 }
 #header{
   width: 100%;
@@ -38,60 +39,57 @@ body{
   background-size: cover;
   background-position: center;
 }
-
-.container{
-    padding: 10px 10%;
+  nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
-
-    nav{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-
+    .logo{
+      width: clamp(50px, 16vw, 140px);
     }
-      .logo{
-        width: clamp(50px, 16vw, 140px);
-      }
-      nav ul li{
-        display: inline-block; /* horizontal alignment */
-        margin: 10px 20px;
-      }
-        nav ul li a{
-          color: #fff;
-          text-decoration: none;
-          font-size: clamp(1rem, 1vw + 0.5rem, 1.2rem);
-          position: relative; /* relative for the underline */
-        }
-        nav ul li a::after{
-          content: '';
-          width: 0;
-          height: 3px;
-          background: var(--bright-red);
-          position: absolute; /* absolute to the a tag */
-          left: 0;
-          bottom: -6px;
-          transition: 0.5s;
-        }
-        nav ul li a:hover::after{
-          width: 100%;
-        }
-    .header-text{
-      margin-top: 20px;
-      font-size: clamp(1rem, 3vw + 0.5rem, 2rem);
-      max-width: 50vw;
+    nav ul a li{
+      display: inline-block; /* horizontal alignment */
+      margin: 10px 20px;
     }
-      .header-text h1{
-        font-size: clamp(1rem, 5vw + 0.5rem, 3rem);
+      nav ul a{
+        color: #fff;
+        text-decoration: none;
+        font-size: clamp(1rem, 1vw + 0.5rem, 1.2rem);
+        position: relative; /* relative for the underline */
+      }
+      nav ul a::after{
+        content: '';
+        width: 0;
+        height: 3px;
+        background: var(--bright-red);
+        position: absolute; /* absolute to the a tag */
+        left: 0;
+        bottom: -6px;
+        transition: 0.5s;
+      }
+      nav ul a:hover::after{
+        width: 100%;
+      }
+  .container{
+      padding: 10px 10%;
+    }
+      .header-text{
         margin-top: 20px;
+        font-size: clamp(1rem, 3vw + 0.5rem, 2rem);
+        max-width: 50vw;
       }
-      .header-text h1 span{
-        color: var(--bright-red);
-      }
-      .header-text h2{
-        font-size: clamp(1rem, 2.5vw + 0.5rem, 1.5rem);
-        margin-top: 20px;
-      }
+        .header-text h1{
+          font-size: clamp(1rem, 5vw + 0.5rem, 3rem);
+          margin-top: 20px;
+        }
+        .header-text h1 span{
+          color: var(--bright-red);
+        }
+        .header-text h2{
+          font-size: clamp(1rem, 2.5vw + 0.5rem, 1.5rem);
+          margin-top: 20px;
+        }
 /******************* About Me ****************/
 #about{
   padding: 30px 0;
@@ -144,13 +142,14 @@ body{
           position: relative;
           text-decoration-color: var(--dark-red);
         }
-        .tab-links::after{
+        .tab-links.active-link::after{
+          /* background color for the tab */
           content: '';
           width: 100%;
           height: 130%;
           position: absolute;
-          left: 0;
-          bottom: -8px;
+            left: 0;
+            bottom: -8px;
           background: var(--bright-black);
           z-index: -1;
           border-radius: 5px;
@@ -288,8 +287,8 @@ body{
     }
     .work .layer{
       width: 100%;
-      height: 40%;
-      background: rgba(0, 0, 0, 0.496);
+      height: 45%;
+      background: rgba(0, 0, 0, 0.7);
       position: absolute;
         left: 0;
         bottom: 0;
@@ -300,25 +299,24 @@ body{
         flex-direction: column;
       padding: 0 40px;
       text-align: center;
-      transition: height 0.5s;
     }
     .layer h3{
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: clamp(0.5rem, 2vw + 0.5rem, 1.2rem);
     }
     .layer p{
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-weight: 500;
+      font-size: clamp(0.5rem, 2vw + 0.5rem, 1.2rem);
     }
     .layer p i{
       margin-top: 20px;
       color: #81062d;
       text-decoration: none;
-      font-size: 1.1rem;
-      line-height: 60px;
+      font-size: clamp(0.5rem, 3.5vw + 0.5rem, 1.2rem);
+      line-height: clamp(20px, 3.5vw + 20px, 60px);
       background: #fff;
-      width: 60px;
-      height: 60px;
+      width: clamp(20px, 3.5vw + 20px, 60px);
+      height: clamp(20px, 3.5vw + 20px, 60px);
       border-radius: 50%;
     }
 .btn{
@@ -419,12 +417,20 @@ nav .fas{
   #header{
     background-image: url(images/phone_background_image.png);
   }
+  nav{
+    padding: 20px;
+    position: sticky;
+      top: 0px;
+    background-color: black;
+    width: 100%;
+    z-index: 2;     
+  }
   nav .fas{
     display: block;
     font-size: 1.8rem;
   }
   nav ul{
-    background: var(--dark-red);
+    background: var(--bright-black);
     position: fixed;
     top: 0;
     right: -200px;
@@ -434,10 +440,17 @@ nav .fas{
     z-index: 2;
     transition: right 0.5s;
   }
-    nav ul li{
-      display: block;
-      margin: 25px;
+    nav ul a{
+      text-decoration: none;
+      color: var(--white);
     }
+    nav ul a:hover{
+      background-color: var(--dark-red);
+    }
+      nav ul a li{
+        display: block;
+        padding: 25px;
+      }
       nav ul .fas{
         position: absolute;
         top: 25px;

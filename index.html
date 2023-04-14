@@ -10,28 +10,29 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
     <script src="https://kit.fontawesome.com/5c4eea8356.js" crossorigin="anonymous"></script>
   </head>
   <body>
+
     <div id="header">
+      <nav id="nav"> 
+        <img src="images/logo.png" alt="logo" class="logo">
+        <ul id="sidemenu">
+          <a href="#header">    <li>Home</li>     </a>
+          <a href="#about">     <li>About</li>    </a>
+          <a href="#services">  <li>Services</li> </a>
+          <a href="#portfolio"> <li>Portfolio</li></a>
+          <a href="#contact">   <li>Contact</li>  </a>
+          <i class="fas fa-xmark" onClick="closemenu()"></i>
+        </ul>
+        <i id="openmenu" class="fas fa-bars" onClick="openmenu()"></i>
+      </nav> 
       <div class="container">
-        <nav>
-          <img src="images/logo.png" alt="logo" class="logo">
-          <ul id="sidemenu">
-            <li><a href="#header">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <i class="fas fa-xmark" onClick="closemenu()"></i>
-          </ul>
-          <i class="fas fa-bars" onClick="openmenu()"></i>
-        </nav>
         <div class="header-text">
-          <p>Frontend Web Developer</p>
+          <!-- <p>Frontend Web Developer</p> -->
           <h1>Hi, <br>I 'm <span>Tobias</span> Pingel.</h1>
           <h2>Software Engineer and Frontend Web Developer.</h2>
         </div>
       </div>
     </div>
-  <!-----------------about section---------------->
+  <!----------------- About me ---------------->
     <div id="about">
       <div class="container">
         <div class="row">
@@ -77,6 +78,7 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
       </div>
     </div>
     <!-- --------------Services---------------- -->
+    <!--
     <div id="services">
       <div class="container">
         <h1 class="sub-title">MyServices</h1>
@@ -110,6 +112,7 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
         </div>
       </div>
     </div>
+    -->
     <!-- --------------portfolio ------------ -->
     <div id="portfolio">
       <div class="container">
@@ -134,9 +137,9 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
                 <p><i class="fa-solid fa-arrow-up-right-from-square"></i></p>
               </div>
             </a>
-          </div> -->
-        </div>
-        <a href="#" class="btn">See more</a>
+          </div>
+        </div> -->
+        <!-- <a href="#" class="btn">See more</a> -->
       </div>
     </div>
     <!-- --------------contact ------------ -->
@@ -178,6 +181,8 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
     </div>
     <!-- --------------javascript ------------ -->
     <script>
+      ///////////////////////// About Me /////////////////////
+      // switch between tabs
       var tablinks = document.getElementsByClassName("tab-links");
       var tabcontents = document.getElementsByClassName("tab-contents");
       function opentab(tabname)
@@ -198,20 +203,32 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
         event.currentTarget.classList.add("active-link"); 
         document.getElementById(tabname).classList.add("active-tab");
       }
-
+      ///////////////////////  Navbar ///////////////////////
       var sidemenu = document.getElementById("sidemenu");
-
       function openmenu()
       {
-        // grab nav bar
+        // grab nav bar and show it
         sidemenu.style.right = "0px";
       }
       function closemenu()
       {
-        // grab navbar
+        // grab navbar and hide it
         sidemenu.style.right = "-200px";
       }
-
+      //close the mobile menu with any click outside the sidemenu or menu button
+      document.onclick = function(e)
+      {
+        console.log(e.target.id);
+        if( e.target.id === "sidemenu"
+            ||  e.target.id === "openmenu")
+        {
+          // when we click on the sidemenu or openmenu we leave the side menu open
+        }else{
+          // as soon we click on any other element, we close the sidemenu
+          closemenu();
+        }
+      }
+      ///////////////////// contact me //////////////////////
       const scriptURL = "https://script.google.com/macros/s/AKfycbwYsin1-RmgSk7Z2aRXfbhr_BnFVsMgbI6IcAdiFhNnhM5tLu_O5D3lBP21Xq2lBOkH/exec";
       const form = document.forms["submit-to-google-sheet"];
       const msg = document.getElementById("msg")
