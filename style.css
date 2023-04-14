@@ -170,8 +170,6 @@ body{
           margin: 15px 0 0 0;
         }
           .tab-contents ul li span{
-            color: var(--dark-red);
-            font-size: 0.9rem;
             font-weight: 600;
           }
           .about-col-2 p a, #education a, #experience a{
