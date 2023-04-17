@@ -14,7 +14,7 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
     <nav id="nav"> 
       <img src="images/logo.png" alt="logo" class="logo">
       <ul id="sidemenu">
-        <li><i class="fas fa-xmark" onClick="closemenu()"></i></li>
+        <li id="closemenu"><i class="fas fa-xmark" onClick="closemenu()"></i></li>
         <a href="#header">    <li>Home</li>     </a>
         <a href="#about">     <li>About</li>    </a>
         <a href="#services">  <li>Services</li> </a>
@@ -81,19 +81,40 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
   
     <div id="services">
       <div class="container">
-        <h1 class="sub-title">MyServices</h1>
+        <h1 class="sub-title">MyServices: Front-end</h1>
         <div class="services-list">
          <!-- <a href="#">-->
-            <div>
-              <i class="fa-solid fa-code"></i>
-              <h2>Front-end</h2>
-              <p>
-                Contact me and let's check, how I can support you. <br> 
-              </p>
-              <!-- <p>learn more</p> -->
-            </div>
-          <!--</a>-->
+          <div>
+            <i class="fa-solid fa-code"></i>
+            <h2>From scratch.</h2>
+            <p>
+              I build a custom websites for you from scratch. Like a static websites, portfolio website, eCommerce store, etc <br><br>
+              Accompany you with my creativity. <br><br>
+              Contact me for a free consulting. 
+            </p>
+            <!-- <p>learn more</p> -->
+          </div>
+        <!--</a>-->
+          <div>
+            <i class="fa-solid fa-building"></i>
+            <h2>Realize Your existing ideas.</h2>
+            <p>
+              Convert your idea or sketch into a real functioning website based on HTML, CSS, JavaScript, React.
+            </p>
+            <!-- <p>learn more</p> -->
+          </div>
 
+          <div>
+            <i class="fa-solid fa-bug-slash"></i>
+            <h2>Improvement and Bugfixing.</h2>
+            <p>
+              I help you to improve, modify you existing project or website. <br><br>
+              Add a specific feature to your existing website. <br><br>
+              Find issues and bugs to fix and eliminate them.
+            </p>
+            <!-- <p>learn more</p> -->
+          </div>
+          
         </div>
       </div>
     </div>
