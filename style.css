@@ -1,18 +1,13 @@
 /*
     ToDos:
-    - rework cv for download
+
+    1) The download CV button just opens up a new tab in Firefox and doesn't download a file
+      - rework cv for download
     - german translation
     - add copy text feature for email
     - design for mobile first
     - besaetigungsemail fuer formular
-    1) The download CV button just opens up a new tab in Firefox and doesn't download a file
     2) I sent you a message over the contact form, would be nice to get an automated response on my email saying something like "I've received your message" - otherwise I've no idea whether this message actually reached you
-    I'll also cchek out how the page looks on mobile
-
-Everything's smooth, would be great if the hamburger icon was always visible to simplify navigation between sections I think
-
-
-Like, right now it's easy to navigate to any section on the first attempt, but for subsequent attempts you for to scroll up to the hamburger icon (or just remember which section is higher or lower right now and scroll accordingly)
     */
 :root{
   --dark-white:         #ababab;
@@ -362,7 +357,7 @@ body{
         color: var(--dark-white);
         display: inline-block; /* inline: the icons are inline, block: each block can be given a height.*/
       }
-      .social-icons a:active{
+      .social-icons a:hover{
         color: var(--dark-red);
       }
       .btn.btn2{
