@@ -1,8 +1,6 @@
 /*
     ToDos:
 
-    1) The download CV button just opens up a new tab in Firefox and doesn't download a file
-      - rework cv for download
     - german translation
     - add copy text feature for email
     - design for mobile first
@@ -316,22 +314,7 @@ body{
       height: clamp(20px, 3.5vw + 20px, 60px);
       border-radius: 50%;
     }
-.btn{
-  display: block;
-  margin: 50px auto;
-  width: -moz-fit-content;
-  width: fit-content;
-  border: 1px solid #81062d;
-  padding: 14px 50px;
-  border-radius: 5px;
-  text-decoration: none;
-  color: #fff;
-  transition: background 0.3s;
-  text-align: center;
-}
-.btn:active{
-  background: #81062d;
-}
+
 /* ********************* contact me ********************** */
 #contact{
   padding: 100px 0 0 0;
@@ -349,21 +332,30 @@ body{
       }
       .social-icons{
         margin-top: 30px;
+        width: 100%;
+        display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          align-items: stretch;
+          align-content: space-between;
+      }
+      .social-icons div{
+        padding: 20px;
       }
       .social-icons a{
         text-decoration: none;
-        font-size: 3rem;
-        margin-right: 15px;
         color: var(--dark-white);
-        display: inline-block; /* inline: the icons are inline, block: each block can be given a height.*/
+        font-size: 3rem;
       }
       .social-icons a:hover{
         color: var(--dark-red);
       }
-      .btn.btn2{
-        display: inline-block;
-        background-color: var(--dark-red);
+      .social-icons a p{
+        cursor: pointer;
+        font-size: 1rem;
       }
+
   .contact-right{
     /* flex-basis: 100%; */
     min-width: 100px;
@@ -385,7 +377,7 @@ body{
       border-radius: 6px
     }
     form .btn2{
-      padding: 14PX 60px;
+      padding: 14px 60px;
       font-size: 1.1rem;
       margin-top: 20px;
       cursor: pointer;
@@ -406,6 +398,24 @@ body{
 }
 .copyright i{
   color:var(--bright-red)
+}
+
+.btn{
+  display: block;
+  margin: 50px auto;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid var(--dark-red);
+  padding: 14px 50px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.3s;
+  text-align: center;
+  background: #81062d7e;
+}
+.btn:hover{
+  background: #81062d;
 }
 
 

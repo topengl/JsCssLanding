@@ -157,21 +157,26 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
         <h1 class="sub-title">Contact Me</h1>
         <div class="row">
           <div class="contact-left">
-            <p><i class="fa-solid fa-square-envelope"></i> webdev.pingel@gmail.com</p>
             <!-- <p><i class="fa-solid fa-square-phone"></i> 123456</p> -->
             <div class="social-icons">
               <!-- <a href="#">                            <i class="fab fa-facebook"></i></a> -->
               <!-- <a href="#">                            <i class="fab fa-twitter-square"></i></a> -->
               <!-- <a href="#">                            <i class="fab fa-instagram"></i></a> -->
-              <a href="https://www.fiverr.com/share/qyA4X9">fiverr.</a>
-              <a href="https://github.com/topengl">
+              <div><a onclick="copyEmail()" href="mailto:webdev.pingel@gmail.com">
+                <i class="fa-solid fa-square-envelope"></i> 
+                <p id="myEmail" >webdev.pingel@gmail.com</p>
+                <p id="copiedEmail"></p>
+              </a></div>
+              <div><a href="https://www.fiverr.com/share/qyA4X9">fiverr.</a></div>
+              <div><a href="https://github.com/topengl">
                 <i class="fab fa-github"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/tpingel/">
+              </a></div>
+
+              <div><a href="https://www.linkedin.com/in/tpingel/">
                 <i class="fab fa-linkedin"></i>
-              </a>
+              </a></div>
             </div>
-            <a href="images/cv.pdf" download class="btn btn2">Download CV</a>
+            <!-- <a href="images/cv.pdf" download class="btn btn2">Download CV</a> -->
           </div>
           <div class="contact-right">
             <form name="submit-to-google-sheet">
@@ -239,9 +244,22 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
         }
       }
       ///////////////////// contact me //////////////////////
+      ////////////////////// copy ////////////////////
+      function copyEmail(){
+        // Copy the text inside the text field
+        navigator.clipboard.writeText("wevdev.pingel@gmail.com");
+        let copiedEmail = document.getElementById("copiedEmail");
+        copiedEmail.innerHTML = "copied email to clip-board";
+        copiedEmail.style.color = "#61b752";
+        setTimeout(function(){
+          copiedEmail.innerHTML = "";
+              }, 5000);
+
+      }
+      ////////////////// form //////////
       const scriptURL = "https://script.google.com/macros/s/AKfycbwYsin1-RmgSk7Z2aRXfbhr_BnFVsMgbI6IcAdiFhNnhM5tLu_O5D3lBP21Xq2lBOkH/exec";
       const form = document.forms["submit-to-google-sheet"];
-      const msg = document.getElementById("msg")
+      const msg = document.getElementById("msg");
 
       form.addEventListener('submit', e => {
         e.preventDefault();
