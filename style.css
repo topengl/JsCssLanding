@@ -47,11 +47,12 @@ body{
       flex-wrap: wrap;
     position: sticky;
       top: 0px;
+    z-index: 3; 
   }
     .logo{
-      width: clamp(50px, 16vw, 140px);
+      width: clamp(50px, 16vw + 50px, 140px);
     }
-    nav ul a li{
+    nav ul li{
       display: inline-block; /* horizontal alignment */
       margin: 10px 20px;
     }
@@ -412,7 +413,7 @@ body{
 }
 
 
-/****************** css for small screens ***********/
+/****************** css for small screens *******************/
 nav .fas{
   display: none;
 }
@@ -420,9 +421,8 @@ nav .fas{
   #header{
     background-image: url(images/phone_background_image.png);
   }
-  nav{
-    padding: 20px;
-    z-index: 2;     
+  nav ul .fas, #openmenu{
+    margin: 20px;
   }
   nav .fas{
     display: block;
@@ -442,6 +442,7 @@ nav .fas{
     nav ul a{
       text-decoration: none;
       color: var(--white);
+      background-color: var(--dark-red);
     }
     nav ul a:hover{
       background-color: var(--dark-red);
