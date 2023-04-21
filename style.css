@@ -1,6 +1,5 @@
 /*
     ToDos:
-    - german translation
     - Maintenance as a service
     - design for mobile first
     - besaetigungsemail fuer formular
@@ -398,6 +397,12 @@ body{
 .copyright i{
   color:var(--bright-red)
 }
+.copyright p a{
+  text-decoration: none;
+  color: var(--dark-white);
+}
+
+/* *********** other ************** */
 
 .btn{
   display: block;
