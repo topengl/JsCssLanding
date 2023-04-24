@@ -2,19 +2,42 @@
     ToDos:
     - Maintenance as a service
     - design for mobile first
-    - besaetigungsemail fuer formular
-    2) I sent you a message over the contact form, would be nice to get an automated response on my email saying something like "I've received your message" - otherwise I've no idea whether this message actually reached you
-    */
+    - besaetigungsemail fuer formular 2) I sent you a message over the contact form, would be nice to get an automated response on my email saying something like "I've received your message" - otherwise I've no idea whether this message actually reached you
+    - merge script tag to one JavaScript File
+    - active navbar link stays even if you scroll out of the links range
+*/
 :root{
-  --dark-white:         #ababab;
-  --white:              #fff;
+  --dark-white:         #333333;
+  --white:              #000000;
   --bright-red:         #ff004f;
-  --dark-red:           #81062d;
-  --black:              #080808;
-  --bright-black:       #262626;
-  --bright-bright-black:#333333;
+  --dark-red:           #e20c5083;
+  --black:              #fefefe;
+  --bright-black:       #d9d9d9;
+  --bright-bright-black:#999999;
   --bright-green:       #61b752;
+  --background-nav:     rgb(255, 255, 255);
+
+  --background-image: url(images/background_image.png);
+  --background-image-mobile: url(images/background_image_mobile.png);
 }
+
+@media (prefers-color-scheme:  dark){
+  :root{
+    --dark-white:         #ababab;
+    --white:              #fff;
+    --bright-red:         #ff004f;
+    --dark-red:           #81062d;
+    --black:              #080808;
+    --bright-black:       #262626;
+    --bright-bright-black:#333333;
+    --bright-green:       #61b752;
+    --background-nav:     rgba(0, 0, 0, 0.7);
+
+    --background-image: url(images/background_image_dark.png);
+    --background-image-mobile: url(images/background_image_dark_mobile.png);
+  }
+}
+
 
 *{
   margin: 0;
@@ -32,44 +55,47 @@ body{
   /*overflow-x: hidden; /* Hide horizontal scrollbar added on body and html, to prevent page scrolling left/right */
   /* if any element uses overflow hidden, then navbar can not use sticky: https://www.designcise.com/web/tutorial/how-to-fix-issues-with-css-position-sticky-not-working*/
 }
+nav{
+  background-color: var(--background-nav);
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  position: sticky;
+    top: 0px;
+  z-index: 3; 
+}
+  .logo{
+    width: clamp(50px, 16vw + 50px, 140px);
+  }
+  nav ul li{
+    display: inline-block; /* horizontal alignment */
+  }
+  nav ul a{
+      padding: 20px; /* padding not margin because we want the full square filled with background color and clickable */
+      color: var(--white);
+      text-decoration: none;
+      font-size: clamp(1rem, 1vw + 0.5rem, 1.2rem);
+      position: relative; /* relative for the underline */
+    }
+
+    nav ul a:hover{
+      background-color: var(--dark-red);
+      transition: 0.5s;
+    }
+    nav ul a.active-link{
+      background-color: var(--dark-red);
+    }
 #header{
   width: 100%;
   height: 1000px;
   max-height: 100vh; /* topin: should be deleted, because otherwise the background image goes into the left side */
   max-height: -webkit-fill-available;
-  background-image: url(images/background_image.png);
+  background-image: var(--background-image);
   background-size: cover;
   background-position: center;
   padding: 100px 0 0 0; /* top padding needed that fixed navbar does not cover the content */
 }
-  nav{
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    position: sticky;
-      top: 0px;
-    z-index: 3; 
-  }
-    .logo{
-      width: clamp(50px, 16vw + 50px, 140px);
-    }
-    nav ul li{
-      display: inline-block; /* horizontal alignment */
-    }
-    nav ul a{
-        padding: 20px; /* padding not margin because we want the full square filled with background color and clickable */
-        color: #fff;
-        text-decoration: none;
-        font-size: clamp(1rem, 1vw + 0.5rem, 1.2rem);
-        position: relative; /* relative for the underline */
-      }
- 
-      nav ul a:hover{
-        background-color: var(--dark-red);
-        transition: 0.5s;
-      }
   .container{
       padding: 10px 10%;
     }
@@ -208,7 +234,7 @@ body{
   display: block; /* a tag is an inline element, so we have to change its display property to block/inline-block. The difference between block and inline-block is, that inline-block does not add a line-break after the element */
 }
   .services-list div{
-    background: #262626;
+    background: var(--bright-black);
     padding: 1.8rem;
     font-size: 0.9rem;
     font-weight: 300;
@@ -303,11 +329,11 @@ body{
     }
     .layer p i{
       margin-top: 20px;
-      color: #81062d;
+      color: darkred;
       text-decoration: none;
       font-size: clamp(0.5rem, 3.5vw + 0.5rem, 1.2rem);
       line-height: clamp(20px, 3.5vw + 20px, 60px);
-      background: #fff;
+      background: white;
       width: clamp(20px, 3.5vw + 20px, 60px);
       height: clamp(20px, 3.5vw + 20px, 60px);
       border-radius: 50%;
@@ -324,7 +350,7 @@ body{
       margin-top: 30px;
     }
       .contact-left p i{
-        color: #ff004f;
+        color: var(--bright-red);
         margin-right: 15px;
         font-size: 1.5rem;
       }
@@ -370,7 +396,7 @@ body{
       background: var(--bright-black);
       padding: calc(0.5rem + 1vw);
       margin: 1rem 0.5rem 1rem 0.5rem;
-      color: #fff;
+      color: var(--white);
       font-size: 1.1rem;
       border-radius: 6px
     }
@@ -413,13 +439,13 @@ body{
   padding: 14px 50px;
   border-radius: 5px;
   text-decoration: none;
-  color: #fff;
+  color: var(--white);
   transition: background 0.3s;
   text-align: center;
-  background: #81062d7e;
+  background: var(--dark-red);
 }
 .btn:hover{
-  background: #81062d;
+  background: var(--bright-red);
 }
 
 

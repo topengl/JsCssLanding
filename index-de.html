@@ -12,7 +12,10 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
   </head>
   <body>
     <nav id="nav"> 
-      <img src="images/logo.png" alt="logo" class="logo">
+      <picture>
+        <source srcset="images/logo_dark.png" media="(prefers-color-scheme: dark)">
+        <img src="images/logo.png" alt="logo" class="logo">
+      </picture>
       <ul id="sidemenu">
         <li id="closemenu"><i class="fas fa-xmark" onClick="closemenu()"></i></li>
         <a href="index.html"> <li>[english]</li>     </a>
@@ -71,7 +74,7 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
               <ul>
                 <li><span>2013 - 2015</span><br>Master of Science, Elektrotechnik und Informationstechnik.</li>
                 <li><span>2009 - 2013</span><br>Bachelor of Science, Erneuerbare Energien und Elektroenergiesysteme.</li>
-                <li><span>Mehr Information:</span><br><a href="https://www.linkedin.com/in/tpingel/">linkedIn <i class="fab fa-linkedin"></i> </a></li>
+                <li><span>Mehr Information:</span><br><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/tpingel/">linkedIn</a></li>
               </ul>
             </div>
           </div>
@@ -199,6 +202,25 @@ The term "DOCTYPE" stands for "Document Type Declaration". It is not an HTML tag
     </div>
     <!-- --------------javascript ------------ -->
     <script>
+      /////////////////////////nav bar ///////////////////////
+      // add background to active link in navbar
+      var navlinks = document.getElementsByClassName("nav-links");
+      var activelink = document.getElementsByClassName("active-link");
+      function changeNavbarActiveLinkBackground()
+      {
+        // remove the active-link from each link
+        for(navlink of navlinks)
+        {
+          navlink.classList.remove("active-link");
+        }
+ 
+        // event is an object that represents the event that triggered the function (onClick)
+        // currentTarget is a property of the event object that refers to the element that the event listener is attached to. (one of the tab-links)
+        // classList is a property that returns the class name(s) of an element as a DOMTokenList object.
+        // The add() method of the classList property adds a class to the list of classes of an element.
+        event.currentTarget.classList.add("active-link"); 
+        
+      }
       ///////////////////////// About Me /////////////////////
       // switch between tabs
       var tablinks = document.getElementsByClassName("tab-links");
