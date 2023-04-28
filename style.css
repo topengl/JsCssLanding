@@ -452,7 +452,7 @@ nav .fas{
 }
 @media only screen and (max-width: 600px){
   #header{
-    background-image: url(images/phone_background_image.png);
+    background-image: var(--background-image-mobile);
   }
   #closemenu{
     padding: 20px;
