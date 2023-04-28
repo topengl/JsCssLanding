@@ -1,10 +1,7 @@
 /*
     ToDos:
-    - Maintenance as a service
     - design for mobile first
-    - besaetigungsemail fuer formular 2) I sent you a message over the contact form, would be nice to get an automated response on my email saying something like "I've received your message" - otherwise I've no idea whether this message actually reached you
-    - merge script tag to one JavaScript File
-    - active navbar link stays even if you scroll out of the links range
+    - besaetigungsemail fuer formular -> email service
 */
 :root{
   --dark-white:         #333333;
