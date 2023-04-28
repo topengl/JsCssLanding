@@ -2,6 +2,7 @@
     ToDos:
     - design for mobile first
     - besaetigungsemail fuer formular -> email service
+    - when turning screen on mobile, it can happen, that twonavbar links background colors are active, due to the fact, that still the old background after scrolling is not deleted and the new one is active proably due to the change of size of the avatar picture, which influences the position of the website on teh screen
 */
 :root{
   --dark-white:         #333333;
