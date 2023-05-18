@@ -4,50 +4,49 @@
     - besaetigungsemail fuer formular -> email service
     - when turning screen on mobile, it can happen, that twonavbar links background colors are active, due to the fact, that still the old background after scrolling is not deleted and the new one is active proably due to the change of size of the avatar picture, which influences the position of the website on teh screen
 */
-:root{
-  --dark-white:         #333333;
-  --white:              #000000;
-  --bright-red:         #ff004f;
-  --dark-red:           #e20c5083;
-  --black:              #fefefe;
-  --bright-black:       #d9d9d9;
-  --bright-bright-black:#999999;
-  --bright-green:       #61b752;
-  --background-nav:     rgb(255, 255, 255);
+:root {
+  --dark-white: #333333;
+  --white: #000000;
+  --bright-red: #ff004f;
+  --dark-red: #e20c5083;
+  --black: #fefefe;
+  --bright-black: #d9d9d9;
+  --bright-bright-black: #999999;
+  --bright-green: #61b752;
+  --background-nav: rgb(255, 255, 255);
 
   --background-image: url(images/background_image.png);
   --background-image-mobile: url(images/background_image_mobile.png);
 }
 
-@media (prefers-color-scheme:  dark){
-  :root{
-    --dark-white:         #ababab;
-    --white:              #fff;
-    --bright-red:         #ff004f;
-    --dark-red:           #81062d;
-    --black:              #080808;
-    --bright-black:       #262626;
-    --bright-bright-black:#333333;
-    --bright-green:       #61b752;
-    --background-nav:     rgba(0, 0, 0, 0.7);
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dark-white: #ababab;
+    --white: #fff;
+    --bright-red: #ff004f;
+    --dark-red: #81062d;
+    --black: #080808;
+    --bright-black: #262626;
+    --bright-bright-black: #333333;
+    --bright-green: #61b752;
+    --background-nav: rgba(0, 0, 0, 0.7);
 
     --background-image: url(images/background_image_dark.png);
     --background-image-mobile: url(images/background_image_dark_mobile.png);
   }
 }
 
-
-*{
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif; /* the font family is set to 'Poppins', which is a specific typeface or font. If the browser does not have 'Poppins' installed on the user's system, it will use a fallback font specified by the "sans-serif" keyword. The "sans-serif" keyword is a generic font family that refers to any font without serifs (the small decorative lines at the end of strokes in letters), which includes popular fonts such as Arial, Helvetica, and Verdana. */
+  font-family: "Poppins", sans-serif; /* the font family is set to 'Poppins', which is a specific typeface or font. If the browser does not have 'Poppins' installed on the user's system, it will use a fallback font specified by the "sans-serif" keyword. The "sans-serif" keyword is a generic font family that refers to any font without serifs (the small decorative lines at the end of strokes in letters), which includes popular fonts such as Arial, Helvetica, and Verdana. */
   box-sizing: border-box; /*By default, when we specify the width or height of an HTML element using CSS, the browser calculates those values based on the content width and height plus any padding and border that is added to the element. This can sometimes lead to unexpected layout issues, especially when dealing with responsive design. The "box-sizing" property allows us to change this default behavior. When "box-sizing" is set to "border-box", the width and height values specified for an element include the content, padding, and border, all within the specified dimensions. This ensures that the total size of the box remains constant, regardless of how much padding or border is added. */
 }
-html{
+html {
   overflow-x: hidden; /* Hide horizontal scrollbar */
   scroll-behavior: smooth;
 }
-body{
+body {
   background: var(--black);
   color: var(--white);
   /*overflow-x: hidden; /* Hide horizontal scrollbar added on body and html, to prevent page scrolling left/right */
@@ -56,35 +55,43 @@ body{
 nav{
   background-color: var(--background-nav);
   display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
   position: sticky;
-    top: 0px;
-  z-index: 3; 
+  top: 0px;
+  z-index: 3;
 }
-  .logo{
-    width: clamp(50px, 16vw + 50px, 140px);
-  }
-  nav ul li{
-    display: inline-block; /* horizontal alignment */
-  }
-  nav ul a{
-      padding: 20px; /* padding not margin because we want the full square filled with background color and clickable */
-      color: var(--white);
-      text-decoration: none;
-      font-size: clamp(1rem, 1vw + 0.5rem, 1.2rem);
-      position: relative; /* relative for the underline */
-    }
+.logo {
+  width: clamp(50px, 16vw + 50px, 140px);
+}
+nav ul{
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
 
-    nav ul a:hover{
-      background-color: var(--dark-red);
-      transition: 0.5s;
-    }
-    nav ul a.active-link{
-      background-color: var(--dark-red);
-    }
-#header{
+}
+nav ul li {
+  display: inline-block; /* horizontal alignment without marks */
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+
+}
+nav ul li a {
+  padding: clamp(5px, 1vw + 5px, 20px); /* padding not margin because we want the full square filled with background color and clickable */
+  color: var(--white);
+  text-decoration: none;
+  font-size: clamp(1rem, 1vw + 0.5rem, 1.2rem);
+}
+
+nav ul li a:hover {
+  background-color: var(--dark-red);
+  transition: 0.5s;
+}
+nav ul li a.active-link {
+  background-color: var(--dark-red);
+}
+#header {
   width: 100%;
   height: 400px;
   /*max-height: 100vh;*/ /* topin: using vh unit does wiggle the background image on mobile firefox and edge, because the navigation bar sliding in, will change the view height */
@@ -94,115 +101,119 @@ nav{
   background-position: center;
   padding: 100px 0 0 0; /* top padding needed that fixed navbar does not cover the content */
 }
-  .container{
-      padding: 10px 10%;
-    }
-      .header-text{
-        margin-top: 20px;
-        font-size: clamp(1rem, 3vw + 0.5rem, 2rem);
-        max-width: 50vw;
-      }
-        .header-text h1{
-          font-size: clamp(1rem, 5vw + 0.5rem, 3rem);
-          margin-top: 20px;
-        }
-        .header-text h1 span{
-          color: var(--bright-red);
-        }
-        .header-text h2{
-          font-size: clamp(1rem, 2.5vw + 0.5rem, 1.5rem);
-          margin-top: 20px;
-        }
+.container {
+  padding: 10px 10%;
+}
+.header-text {
+  margin-top: 20px;
+  font-size: clamp(1rem, 3vw + 0.5rem, 2rem);
+  max-width: 50vw;
+}
+.header-text h1 {
+  font-size: clamp(1rem, 5vw + 0.5rem, 3rem);
+  margin-top: 20px;
+}
+.header-text h1 span {
+  color: var(--bright-red);
+}
+.header-text h2 {
+  font-size: clamp(1rem, 2.5vw + 0.5rem, 1.5rem);
+  margin-top: 20px;
+}
 /******************* About Me ****************/
-#about{
+#about {
   padding: 100px 0 0 0;
 }
-  .row{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-    .about-col-1{
-      flex-basis: 30%; /* The width of the column will be 35%. When flex-basis is set to 50%, it means that the initial main size of the flex item will be 50% of the width or height of its containing block�s content area. https://youtu.be/jx4FtPlDXJg */
-      transition: flex-basis 2s; 
-    }
-      .about-col-1 img{
-        border-radius: 15px;
-        width: 100%;
-        min-width: 200px;
-      }
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.about-col-1 {
+  flex-basis: 30%; /* The width of the column will be 35%. When flex-basis is set to 50%, it means that the initial main size of the flex item will be 50% of the width or height of its containing block�s content area. https://youtu.be/jx4FtPlDXJg */
+  transition: flex-basis 2s;
+}
+.about-col-1 img {
+  border-radius: 15px;
+  width: 100%;
+  min-width: 200px;
+}
 
-    .about-col-2{
-      flex-basis: 50%;
-    }
-      .sub-title{
-        font-size: clamp(1rem, 5vw + 0.5rem, 5rem);
-        font-weight: 600;
-      }
-      .about-col-2 p{
-        margin: 5px;
-      }
-      .tab-titles{
-        margin: 20px 0 0 0;
-        display: flex;
-          justify-content: space-around;
-          flex-direction: row;
-      }
-        .tab-links{
-          font-size: 1.1rem;
-          font-weight: 600;
-          cursor: pointer;
-          padding: 10px;
-          border: none;
-        }
-        /* The ::after selector inserts something after the content of each selected element(s).*/
-        .tab-links.active-link{
-          position: relative;
-        }
-        .tab-links.active-link::after{
-          /* background color for the tab */
-          content: '';
-          width: 100%;
-          height: 130%;
-          position: absolute;
-            left: 0;
-            bottom: -8px;
-          background: var(--bright-black);
-          z-index: -1;
-          border-radius: 5px;
-        }
-      .tab-contents{
-        display: none;
-      }
-      .tab-contents.active-tab{
-        display: block;
-        background: var(--bright-black);
-        border-radius: 5px;
-        padding: 10px;
-        border: none;
-      }
-        .tab-contents ul li{
-          list-style: none;
-          margin: 15px 0 0 0;
-        }
-          .tab-contents ul li span{
-            font-weight: 600;
-          }
-          .about-col-2 p a, #education a, #experience a{
-            text-decoration: underline;
-              text-decoration-color: var(--bright-bright-black);
-              text-decoration-thickness: 3px;
-            color: var(--white);
-            transition: text-decoration-color 0.5s;
-          }
-          .about-col-2 p a:active, #education a:active, #experience a:active{
-              text-decoration-color: var(--dark-white);
-          }
+.about-col-2 {
+  flex-basis: 50%;
+}
+.sub-title {
+  font-size: clamp(1rem, 5vw + 0.5rem, 5rem);
+  font-weight: 600;
+}
+.about-col-2 p {
+  margin: 5px;
+}
+.tab-titles {
+  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.tab-links {
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+}
+/* The ::after selector inserts something after the content of each selected element(s).*/
+.tab-links.active-link {
+  position: relative;
+}
+.tab-links.active-link::after {
+  /* background color for the tab */
+  content: "";
+  width: 100%;
+  height: 130%;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  background: var(--bright-black);
+  z-index: -1;
+  border-radius: 5px;
+}
+.tab-contents {
+  display: none;
+}
+.tab-contents.active-tab {
+  display: block;
+  background: var(--bright-black);
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+}
+.tab-contents ul li {
+  list-style: none;
+  margin: 15px 0 0 0;
+}
+.tab-contents ul li span {
+  font-weight: 600;
+}
+.about-col-2 p a,
+#education a,
+#experience a {
+  text-decoration: underline;
+  text-decoration-color: var(--bright-bright-black);
+  text-decoration-thickness: 3px;
+  color: var(--white);
+  transition: text-decoration-color 0.5s;
+}
+.about-col-2 p a:active,
+#education a:active,
+#experience a:active {
+  text-decoration-color: var(--dark-white);
+}
 /* *************************** services **************************** */
-#services{
+#services {
   padding: 100px 0 0 0;
 }
-.services-list{
+.services-list {
   display: grid;
   /*
   The grid-template-columns property specifies the size and number of columns in a grid layout. 
@@ -226,46 +237,46 @@ nav{
   margin: 20px 0;
 }
 /* not make only the link but the whole grid element click able (href)*/
-.services-list a{
+.services-list a {
   text-decoration: none;
-  color: var(--white);  
+  color: var(--white);
   display: block; /* a tag is an inline element, so we have to change its display property to block/inline-block. The difference between block and inline-block is, that inline-block does not add a line-break after the element */
 }
-  .services-list div{
-    background: var(--bright-black);
-    padding: 1.8rem;
-    font-size: 0.9rem;
-    font-weight: 300;
-    border-radius: 10px;
-    transition: 0.5s;
-    height: 100%;
-    width: 100%;
-    display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-  }
-  .services-list div:active{
-    background: #310010;
-  }
-  .services-list div i{
-    font-size: 40px;
-    margin: 0 0 10px 0;
-  }
-  .services-list div h2{
-    font-size: 2rem;
-    margin: 0 0 10px 0;
-    font-weight: 600;
-  }
-  .services-list div p{
-    margin: 0 0 10px 0;
-  }
+.services-list div {
+  background: var(--bright-black);
+  padding: 1.8rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  border-radius: 10px;
+  transition: 0.5s;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.services-list div:active {
+  background: #310010;
+}
+.services-list div i {
+  font-size: 40px;
+  margin: 0 0 10px 0;
+}
+.services-list div h2 {
+  font-size: 2rem;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+.services-list div p {
+  margin: 0 0 10px 0;
+}
 
 /* ********************** portfolio ************************* */
-#portfolio{
+#portfolio {
   padding: 100px 0 0 0;
 }
-.work-list{
+.work-list {
   display: grid;
   /*
   The grid-template-columns property specifies the size and number of columns in a grid layout. 
@@ -287,130 +298,131 @@ nav{
   grid-gap: 40px;
   margin: 20px 0;
 }
-.work{
+.work {
   border-radius: 15px;
   position: relative;
   overflow: hidden;
 }
-  .work a{
-    text-decoration: none;
-    color: #fff;
-  }
-    .work img{
-      width: 100%;
-      border-radius: 10px;
-      display: block;
-      transition: transform 0.5s;
-    }
-    .work .layer{
-      width: 100%;
-      height: 45%;
-      background: rgba(0, 0, 0, 0.7);
-      position: absolute;
-        left: 0;
-        bottom: 0;
-      overflow: hidden;
-      display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-      padding: 0 40px;
-      text-align: center;
-    }
-    .layer h3{
-      font-weight: 600;
-      font-size: clamp(0.5rem, 2vw + 0.5rem, 1.2rem);
-    }
-    .layer p{
-      font-weight: 500;
-      font-size: clamp(0.5rem, 2vw + 0.5rem, 1.2rem);
-    }
-    .layer p i{
-      margin-top: 20px;
-      color: darkred;
-      text-decoration: none;
-      font-size: clamp(0.5rem, 3.5vw + 0.5rem, 1.2rem);
-      line-height: clamp(20px, 3.5vw + 20px, 60px);
-      background: white;
-      width: clamp(20px, 3.5vw + 20px, 60px);
-      height: clamp(20px, 3.5vw + 20px, 60px);
-      border-radius: 50%;
-    }
+.work a {
+  text-decoration: none;
+  color: #fff;
+}
+.work img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.5s;
+}
+.work .layer {
+  width: 100%;
+  height: 45%;
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+}
+.layer h3 {
+  font-weight: 600;
+  font-size: clamp(0.5rem, 2vw + 0.5rem, 1.2rem);
+}
+.layer p {
+  font-weight: 500;
+  font-size: clamp(0.5rem, 2vw + 0.5rem, 1.2rem);
+}
+.layer p i {
+  margin-top: 20px;
+  color: darkred;
+  text-decoration: none;
+  font-size: clamp(0.5rem, 3.5vw + 0.5rem, 1.2rem);
+  line-height: clamp(20px, 3.5vw + 20px, 60px);
+  background: white;
+  width: clamp(20px, 3.5vw + 20px, 60px);
+  height: clamp(20px, 3.5vw + 20px, 60px);
+  border-radius: 50%;
+}
 
 /* ********************* contact me ********************** */
-#contact{
+#contact {
   padding: 100px 0 0 0;
 }
-  .contact-left{
-    min-width: 210px;
-  }
-    .contact-left p{
-      margin-top: 30px;
-    }
-      .contact-left p i{
-        color: var(--bright-red);
-        margin-right: 15px;
-        font-size: 1.5rem;
-      }
-      .social-icons{
-        margin-top: 30px;
-        width: 100%;
-        display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: space-around;
-          align-items: stretch;
-          align-content: space-between;
-      }
-      .social-icons div{
-        padding: 20px;
-      }
-      .social-icons a{
-        text-decoration: none;
-        color: var(--dark-white);
-        font-size: 3rem;
-      }
-      .social-icons a:hover{
-        color: var(--dark-red);
-      }
-      .social-icons a p{
-        cursor: pointer;
-        font-size: 1rem;
-      }
+.contact-left {
+  min-width: 210px;
+}
+.contact-left p {
+  margin-top: 30px;
+}
+.contact-left p i {
+  color: var(--bright-red);
+  margin-right: 15px;
+  font-size: 1.5rem;
+}
+.social-icons {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: space-between;
+}
+.social-icons div {
+  padding: 20px;
+}
+.social-icons a {
+  text-decoration: none;
+  color: var(--dark-white);
+  font-size: 3rem;
+}
+.social-icons a:hover {
+  color: var(--dark-red);
+}
+.social-icons a p {
+  cursor: pointer;
+  font-size: 1rem;
+}
 
-  .contact-right{
-    /* flex-basis: 100%; */
-    min-width: 100px;
-    width: calc(30vw + 200px);
-    max-width: 100%; 
-  }
-    .contact-right form{
-      width: 100%;
-    }
-    form input, form textarea{
-      width: 100%;
-      border: 0;
-      outline: none;
-      background: var(--bright-black);
-      padding: calc(0.5rem + 1vw);
-      margin: 1rem 0.5rem 1rem 0.5rem;
-      color: var(--white);
-      font-size: 1.1rem;
-      border-radius: 6px
-    }
-    form .btn2{
-      padding: 14px 60px;
-      font-size: 1.1rem;
-      margin-top: 20px;
-      cursor: pointer;
-    }
-    #msg{
-      color: var(--bright-green);
-      margin-top: -50px;
-      display: block;
-    }
+.contact-right {
+  /* flex-basis: 100%; */
+  min-width: 100px;
+  width: calc(30vw + 200px);
+  max-width: 100%;
+}
+.contact-right form {
+  width: 100%;
+}
+form input,
+form textarea {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: var(--bright-black);
+  padding: calc(0.5rem + 1vw);
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  color: var(--white);
+  font-size: 1.1rem;
+  border-radius: 6px;
+}
+form .btn2 {
+  padding: 14px 60px;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  cursor: pointer;
+}
+#msg {
+  color: var(--bright-green);
+  margin-top: -50px;
+  display: block;
+}
 /***************** footer *************/
-.copyright{
+.copyright {
   width: 100%;
   text-align: center;
   padding: 25px 0;
@@ -418,17 +430,17 @@ nav{
   font-weight: 300;
   margin-top: 20px;
 }
-.copyright i{
-  color:var(--bright-red)
+.copyright i {
+  color: var(--bright-red);
 }
-.copyright p a{
+.copyright p a {
   text-decoration: none;
   color: var(--dark-white);
 }
 
 /* *********** other ************** */
 
-.btn{
+.btn {
   display: block;
   margin: 50px auto;
   width: -moz-fit-content;
@@ -442,60 +454,67 @@ nav{
   text-align: center;
   background: var(--dark-red);
 }
-.btn:hover{
+.btn:hover {
   background: var(--bright-red);
 }
 
-
 /****************** css for small screens *******************/
-nav .fas{
+nav .fas {
   display: none;
+  cursor: pointer;
 }
-@media only screen and (max-width: 600px){
-  #header{
+@media only screen and (max-width: 600px) {
+  #header {
     background-image: var(--background-image-mobile);
   }
-  #closemenu{
+  #closemenu {
     padding: 20px;
     font-size: 1.8rem;
   }
-  #openmenu{
+  #openmenu {
     display: block;
     font-size: 1.8rem;
     margin: 20px;
   }
-  nav ul{
+  nav ul {
     background: var(--bright-black);
     position: fixed;
     top: 0;
     right: -200px;
-    width:200px;
+    width: 200px;
     height: 100vh;
     padding-top: 50px;
     z-index: 2;
     transition: right 0.5s;
+    display: block;
   }
 
-      nav ul a, nav ul .fas{
-        display: block;
-      }
-      nav ul .fas{
-        position: absolute;
-          top: 25px;
-          left: 25px;
-        cursor: pointer;
-      }
-  .about-col-1, .about-col-2{
+  nav ul li,
+  nav ul .fas {
+    display: block;
+    margin: 0px;
+  }
+  nav ul li a{
+    padding: 20px;
+    display:inline-block;
+    width:100%;
+    height:100%;
+  }
+  nav ul .fas {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    cursor: pointer;
+  }
+  .about-col-1,
+  .about-col-2 {
     flex-basis: 100%;
     transition: flex-basis 2s;
   }
-  .about-col-1{
+  .about-col-1 {
     margin-bottom: 30px;
   }
-  .about-col-2{
+  .about-col-2 {
     font-size: 1.1rem;
   }
-
 }
-
- 
